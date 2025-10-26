@@ -30,3 +30,6 @@ pgsql/
 # temporary files storage
 /temp/
 /tmp/
+
+# python version
+.python-version
