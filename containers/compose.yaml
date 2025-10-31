@@ -12,6 +12,13 @@ services:
       - ./postgres:/docker-entrypoint-initdb.d:ro
       - django-db:/var/lib/postgresql/data
 
+  mail:
+    image: docker.io/mailhog/mailhog:v1.0.1
+    container_name: mailhog
+    ports:
+      - "${SMTP_PORT:-1025}:1025"
+      - "${SMTP_WEB_PORT:-8025}:8025"
+
 volumes:
   django-db:
     driver: local
