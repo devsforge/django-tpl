@@ -1,3 +1,7 @@
+# IMPORTANT:
+# this file is deprecated and will be removed in the future.
+# please use containers/compose.yaml instead.
+
 version: "3.9"
 
 services:
