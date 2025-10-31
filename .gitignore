@@ -24,8 +24,8 @@ pgsql/
 *.db
 
 # static files storage
-/static/*
-!/static/index.html
+/staticfiles/*
+!/staticfiles/index.html
 
 # temporary files storage
 /temp/

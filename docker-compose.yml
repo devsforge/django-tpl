@@ -13,7 +13,7 @@ services:
     ports:
       - "${STATIC_PORT:-8080}:80"
     volumes:
-      - ./static:/usr/share/nginx/:ro
+      - ./staticfiles:/usr/share/nginx/:ro
       - ./docker/static:/etc/nginx/conf.d/:ro
 
   db:
