@@ -10,7 +10,7 @@ services:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - ./postgres:/docker-entrypoint-initdb.d:ro
-      - django-db:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
 
   mail:
     image: docker.io/mailhog/mailhog:v1.0.1
@@ -20,5 +20,5 @@ services:
       - "${SMTP_WEB_PORT:-8025}:8025"
 
 volumes:
-  django-db:
+  postgres:
     driver: local
