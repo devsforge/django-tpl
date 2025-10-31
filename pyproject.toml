@@ -33,6 +33,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest-django",
+    "black>=25.9.0",
 ]
 
 [project.urls]
