@@ -25,7 +25,7 @@ pgsql/
 
 # static files storage
 /staticfiles/*
-!/staticfiles/index.html
+!/staticfiles/README.md
 
 # temporary files storage
 /temp/

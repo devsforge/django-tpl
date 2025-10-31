@@ -20,15 +20,21 @@ services:
       - "${SMTP_WEB_PORT:-8025}:8025"
 
   staticfiles:
-    image: docker.io/nginx:1.29.3-alpine
-    container_name: nginx
+    image: docker.io/caddy:2.10.2-alpine
+    container_name: caddy
     restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
     ports:
-      - "${STATIC_PORT:-8080}:80"
+      - "${STATIC_PORT:-8888}:80"
     volumes:
-      - ../staticfiles:/usr/share/nginx/:ro
-      - ./nginx:/etc/nginx/conf.d/:ro
+      - ../staticfiles:/srv:ro
+      - ./caddy:/etc/caddy:ro
+      - caddy_data:/data
+      - caddy_config:/config
 
 volumes:
   postgres:
     driver: local
+  caddy_data:
+  caddy_config:
