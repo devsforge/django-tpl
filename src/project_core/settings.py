@@ -82,7 +82,7 @@ DATABASES = {
         "PASSWORD": "django",
         "TEST": {
             "NAME": "django_test",
-        }
+        },
     }
 }
 
