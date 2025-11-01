@@ -33,8 +33,25 @@ services:
       - caddy_data:/data
       - caddy_config:/config
 
+  pgadmin:
+    image: docker.io/dpage/pgadmin4
+    container_name: pgadmin
+    restart: unless-stopped
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin@devsforge.org
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin
+      - PGADMIN_CONFIG_SERVERMODE=False
+    ports:
+      - "${PGADMIN_PORT:-8032}:80"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+    depends_on:
+      - database
+
 volumes:
   postgres:
     driver: local
   caddy_data:
   caddy_config:
+  pgadmin:
