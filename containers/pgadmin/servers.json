@@ -1,11 +1,11 @@
 {
   "Servers": {
-    "docker": {
+    "django-template": {
       "Name": "PostgresSQL Server",
-      "Group": "Docker Compose",
+      "Group": "Compose",
       "Port": 5432,
       "Username": "postgres",
-      "Host": "postgresql-server",
+      "Host": "database",
       "SSLMode": "prefer",
       "MaintenanceDB": "postgres"
     }

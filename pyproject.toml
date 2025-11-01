@@ -1,16 +1,39 @@
-[tool.poetry]
-name = "django-template"
-version = "1.0.1"
-description = "the django training project template"
-authors = ["Serhii Horodilov <sgorodil@gmail.com>"]
-license = "MIT"
+[project]
+name = "django-tpl"
+dynamic = ["version"]
+description = "The Django project template with supporting services containers (e.g. postgresql, smtp etc.)"
+requires-python = ">= 3.10"
+maintainers = [
+    { name = "Serhii Horodilov", email = "shorodilov@devsforge.org" },
+]
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["python", "django", "template", "web", "framework"]
+# see also:: https://pypi.org/classifiers
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 5",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Version Control :: Git",
+]
+dependencies = [
+    "django>=5.2.7",
+    "psycopg[binary]",
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-Django = "^5.0.1"
-psycopg2-binary = "^2.9.9"
+[project.optional-dependencies]
+dev = [
+    "pytest-django",
+    "black>=25.9.0",
+]
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[project.urls]
