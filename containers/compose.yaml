@@ -18,6 +18,10 @@ services:
     ports:
       - "${SMTP_PORT:-1025}:1025"
       - "${SMTP_WEB_PORT:-8025}:8025"
+    volumes:
+      - ./mailhog:/etc/mailhog:ro
+    environment:
+      - MH_AUTH_FILE=/etc/mailhog/auth.txt
 
   staticfiles:
     image: docker.io/caddy:2.10.2-alpine
