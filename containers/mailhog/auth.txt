@@ -1,0 +1,1 @@
+django:$2a$12$cWb4JgyAwd9BoD.4sr6mOuSg9/1vTq6JUYRZfCjSgJJmTtG3rz1FC
