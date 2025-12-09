@@ -128,3 +128,12 @@ STATIC_ROOT = BASE_DIR.parent / "staticfiles"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Sending email
+# https://docs.djangoproject.com/en/5.2/topics/email/
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = "django"
+EMAIL_HOST_PASSWORD = "django"
+EMAIL_SUBJECT_PREFIX = ""
