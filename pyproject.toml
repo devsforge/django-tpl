@@ -38,8 +38,8 @@ dev = [
 ]
 
 [tool.bumpver]
-current_version = "2025.1012rc0"
-version_pattern = "YYYY.BUILD[PYTAGNUM]"
+current_version = "2025.10rc1"
+version_pattern = "YYYY.0M[.PATCH][PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 tag_message = "{new_version}"
 tag_scope = "default"
