@@ -121,7 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "http://localhost:8888"
 STATIC_ROOT = BASE_DIR.parent / "staticfiles"
 
 # Default primary key field type
