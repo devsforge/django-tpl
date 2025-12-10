@@ -20,6 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# noinspection SpellCheckingInspection
 SECRET_KEY = "django-insecure-ir1a1f!bjywcs+1$shmpbq=6ss3!0!^%tha*midcv=mn*48x^f"
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "user.apps.UserConfig"
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,8 @@ EMAIL_PORT = 1025
 EMAIL_HOST_USER = "django"
 EMAIL_HOST_PASSWORD = "django"
 EMAIL_SUBJECT_PREFIX = ""
+
+# Custom user model
+# https://docs.djangoproject.com/en/5.2/topics/auth/customizing/
+
+AUTH_USER_MODEL = "user.User"
