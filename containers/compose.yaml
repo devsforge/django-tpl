@@ -24,6 +24,8 @@ services:
       - MH_AUTH_FILE=/etc/mailhog/auth.txt
 
   staticfiles:
+    profiles:
+      - files
     image: docker.io/caddy:2.10.2-alpine
     container_name: caddy
     restart: unless-stopped
