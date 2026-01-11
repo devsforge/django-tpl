@@ -38,6 +38,8 @@ services:
       - caddy_config:/config
 
   pgadmin:
+    profiles:
+      - admin
     image: docker.io/dpage/pgadmin4
     container_name: pgadmin
     restart: unless-stopped
