@@ -11,6 +11,8 @@ services:
     volumes:
       - ./postgres:/docker-entrypoint-initdb.d:ro
       - postgres:/var/lib/postgresql/data
+    networks:
+      - database
 
   mail:
     image: docker.io/mailhog/mailhog:v1.0.1
@@ -22,6 +24,8 @@ services:
       - ./mailhog:/etc/mailhog:ro
     environment:
       - MH_AUTH_FILE=/etc/mailhog/auth.txt
+    networks:
+      - mail
 
   staticfiles:
     profiles:
@@ -38,6 +42,8 @@ services:
       - ./caddy:/etc/caddy:ro
       - caddy_data:/data
       - caddy_config:/config
+    networks:
+      - files
 
   pgadmin:
     profiles:
@@ -54,6 +60,8 @@ services:
     volumes:
       - pgadmin:/var/lib/pgadmin
       - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+    networks:
+      - database
     depends_on:
       - database
 
@@ -63,3 +71,8 @@ volumes:
   caddy_data:
   caddy_config:
   pgadmin:
+
+networks:
+  database:
+  mail:
+  files:
