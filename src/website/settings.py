@@ -10,11 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -27,7 +27,6 @@ SECRET_KEY = "django-insecure-ir1a1f!bjywcs+1$shmpbq=6ss3!0!^%tha*midcv=mn*48x^f
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -70,24 +69,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "website.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST": "localhost",
-        "PORT": "5432",
-        "NAME": "django",
-        "USER": "django",
-        "PASSWORD": "django",
+        "HOST": os.getenv("DB_NAME", "localhost"),
+        "PORT": os.getenv("DB_PORT", "5432"),
+        "NAME": os.getenv("DB_NAME", "django"),
+        "USER": os.getenv("DB_USER", "django"),
+        "PASSWORD": os.getenv("DB_PASSWORD", "django"),
         "TEST": {
             "NAME": "django_test",
         },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -107,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
@@ -119,11 +115,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "http://localhost:8888/"
+STATIC_URL = os.getenv("STATIC_URL", "/static/")
 STATIC_ROOT = BASE_DIR.parent / "staticfiles"
 
 # Default primary key field type
@@ -134,11 +129,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Sending email
 # https://docs.djangoproject.com/en/5.2/topics/email/
 
-EMAIL_HOST = "localhost"
-EMAIL_PORT = 1025
-EMAIL_HOST_USER = "django"
-EMAIL_HOST_PASSWORD = "django"
-EMAIL_SUBJECT_PREFIX = ""
+EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
+EMAIL_PORT = os.getenv("EMAIL_PORT", "1025")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "django")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "django")
+EMAIL_SUBJECT_PREFIX = os.getenv("EMAIL_SUBJECT_PREFIX", "[Django] ")
 
 # Custom user model
 # https://docs.djangoproject.com/en/5.2/topics/auth/customizing/
