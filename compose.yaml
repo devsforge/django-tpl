@@ -1,4 +1,4 @@
-name: django-tpl
+name: django-template
 services:
   database:
     image: docker.io/postgres:16.10-alpine
