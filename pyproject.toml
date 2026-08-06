@@ -1,8 +1,8 @@
 [project]
-name = "django-tpl"
+name = "django-template"
 dynamic = ["version"]
 description = "The Django project template with supporting services containers (e.g. postgresql, smtp etc.)"
-requires-python = ">= 3.10"
+requires-python = ">= 3.12"
 maintainers = [
     { name = "Serhii Horodilov", email = "shorodilov@devsforge.org" },
 ]
@@ -13,26 +13,22 @@ keywords = ["python", "django", "template", "web", "framework"]
 # see also:: https://pypi.org/classifiers
 classifiers = [
     "Framework :: Django",
-    "Framework :: Django :: 5",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Software Development",
     "Topic :: Software Development :: Version Control :: Git",
 ]
 dependencies = [
-    "django>=5.2.7",
+    "django",
     "psycopg[binary]",
 ]
 
 [dependency-groups]
 dev = [
-    "black>=25.9.0",
+    "black>=25.12.0",
     "bumpver>=2025.1131",
     "pytest-django>=4.11.1",
 ]
@@ -56,5 +52,5 @@ push = false
 
 [tool.black]
 line-length = 119
-target-version = ["py310", "py311", "py312"]
+target-version = ["py312"]
 include = "\\.pyi?$"
