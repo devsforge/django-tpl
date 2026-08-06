@@ -126,7 +126,7 @@ directory:
 ```
 src/
 ├── manage.py              # Django management script
-└── project_core/          # Main project package
+└── website/               # Main project package
     ├── __init__.py
     ├── settings.py        # Project settings (PostgreSQL configured)
     ├── urls.py            # URL routing
@@ -298,6 +298,8 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
 ```
 
+Container uses basic auth with username/password set to `django/django`.
+
 ### Caddy
 
 Caddy is a modern, production-ready web server with automatic HTTPS. In this
@@ -430,22 +432,23 @@ is similar, but there are some differences. See the
 .
 ├── .editorconfig              # Editor configuration
 ├── .github/                   # GitHub Actions and configuration
-│   ├── workflows/            # CI/CD workflows
-│   └── auto-assign.yml       # Auto-assign PR reviewers
-├── .gitignore                # Git ignore rules
-├── .python-version           # Python version for pyenv
-├── containers/               # Docker container configurations
-│   ├── compose.yaml         # Docker Compose file
-│   ├── caddy/               # Caddy web server config
-│   └── postgres/            # PostgreSQL initialization scripts
-├── src/                      # Django project source
-│   ├── manage.py            # Django management script
-│   └── project_core/        # Main project package
-├── staticfiles/              # Static files directory
-├── pyproject.toml           # Project metadata and dependencies
-├── uv.lock                  # Locked dependencies (uv)
-├── LICENSE                  # MIT License
-└── README.md                # This file
+│   ├── workflows/             # CI/CD workflows
+│   └── auto-assign.yml        # Auto-assign PR reviewers
+├── .gitignore                 # Git ignore rules
+├── .python-version            # Python version for pyenv
+├── containers/                # Docker container configurations
+│   ├── compose.yaml           # Docker Compose file
+│   ├── caddy/                 # Caddy web server config
+│   └── postgres/              # PostgreSQL initialization scripts
+├── src/                       # Django project source
+│   ├── manage.py              # Django management script
+│   └── project_core/          # Main project package
+├── staticfiles/               # Static files directory
+├── compose.yaml               # Compose file for containers
+├── pyproject.toml             # Project metadata and dependencies
+├── uv.lock                    # Locked dependencies (uv)
+├── LICENSE                    # MIT License
+└── README.md                  # This file
 ```
 
 ## Troubleshooting

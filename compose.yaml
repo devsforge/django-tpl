@@ -1,4 +1,4 @@
-name: django-tpl
+name: django-template
 services:
   database:
     image: docker.io/postgres:16.10-alpine
@@ -9,7 +9,7 @@ services:
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
-      - ./postgres:/docker-entrypoint-initdb.d:ro
+      - ./containers/postgres:/docker-entrypoint-initdb.d:ro
       - postgres:/var/lib/postgresql/data
     networks:
       - database
@@ -21,7 +21,7 @@ services:
       - "${SMTP_PORT:-1025}:1025"
       - "${SMTP_WEB_PORT:-8025}:8025"
     volumes:
-      - ./mailhog:/etc/mailhog:ro
+      - ./containers/mailhog:/etc/mailhog:ro
     environment:
       - MH_AUTH_FILE=/etc/mailhog/auth.txt
     networks:
@@ -38,8 +38,8 @@ services:
     ports:
       - "${STATIC_PORT:-8888}:80"
     volumes:
-      - ../staticfiles:/srv:ro
-      - ./caddy:/etc/caddy:ro
+      - ./staticfiles:/srv:ro
+      - ./containers/caddy:/etc/caddy:ro
       - caddy_data:/data
       - caddy_config:/config
     networks:
@@ -59,7 +59,7 @@ services:
       - "${PGADMIN_PORT:-8032}:80"
     volumes:
       - pgadmin:/var/lib/pgadmin
-      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+      - ./containers/pgadmin/servers.json:/pgadmin4/servers.json:ro
     networks:
       - database
     depends_on:
