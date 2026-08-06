@@ -44,8 +44,9 @@ To deactivate, type `deactivate` in your terminal and hit Enter.
 
 ## Installing Dependencies
 
-This project uses modern Python packaging standards with `pyproject.toml`. You
-can install dependencies using pip or uv (recommended for faster installs).
+This project uses modern Python packaging standards with `pyproject.toml`.
+You can install dependencies using pip or uv (recommended for faster
+installations).
 
 ### Using pip
 
@@ -87,7 +88,7 @@ file.
 If you've already installed dependencies and want to add development tools:
 
 ```shell
-uv sync --extra dev
+uv sync
 ```
 
 Or to install without development dependencies:
@@ -175,20 +176,20 @@ it's a tool for defining and running multi-container Docker applications.
 The installation process is described
 [here](https://docs.docker.com/compose/install/).
 
-The compose file defines a set of services for development:
+The "compose" file defines a set of services for development:
 
-* **PostgreSQL** - Database server
-* **pgAdmin** - PostgreSQL administration web interface
-* **MailHog** - Email testing tool with web interface
-* **Caddy** - Web server for serving static files
+* **PostgreSQL** – Database server
+* **pgAdmin** – PostgreSQL administration web interface
+* **MailHog** – Email testing tool with web interface
+* **Caddy** – Web server for serving static files
 
 Default mapped ports:
 
-* 5432 for PostgreSQL
-* 8032 for pgAdmin web interface
-* 1025 for SMTP (MailHog)
-* 8025 for MailHog web interface
-* 8888 for static files (Caddy)
+* `5432` for PostgreSQL
+* `8032` for pgAdmin web interface
+* `1025` for SMTP (MailHog)
+* `8025` for MailHog web interface
+* `8888` for static files (Caddy)
 
 You can change these values by setting environment variables (see below).
 
@@ -203,7 +204,7 @@ docker compose logs   # view logs
 
 ### Setting Up Environment Variables
 
-Some settings in the compose file can be overridden using environment
+Some settings in the "compose" file can be overridden using environment
 variables. If you're not familiar with them, here's a
 [Wiki article](https://en.wikipedia.org/wiki/Environment_variable).
 
@@ -221,7 +222,7 @@ The `database` service runs a PostgreSQL 16.10 Alpine container. It exposes
 port 5432 to the host machine, so you can use it as if PostgreSQL were running
 natively on your system.
 
-The default port mapping is "5432:5432". If port 5432 is already occupied, you
+The default port mapping is `5432:5432`. If port 5432 is already occupied, you
 can set a different port using the `POSTGRES_PORT` environment variable.
 
 Pre-defined credentials:
@@ -259,8 +260,9 @@ After running pgAdmin, visit http://localhost:8032 in your web browser (adjust
 the port number if needed).
 
 The connection to the PostgreSQL server is pre-configured via the
-`containers/pgadmin/servers.json` file. When you log in, you'll see the "
-PostgresSQL Server" already configured and connected to the `database` service.
+`containers/pgadmin/servers.json` file. When you log in, you'll see the
+"PostgresSQL Server" already configured and connected to the `database`
+service.
 
 You can run this service separately:
 
@@ -279,7 +281,7 @@ The MailHog container exposes two ports:
 * Port 1025 for SMTP (configure this in your Django settings)
 * Port 8025 for the web interface
 
-Default port mappings: "1025:1025" and "8025:8025". You can customize these
+Default port mappings: "1025:1025" and `8025:8025`. You can customize these
 using the `SMTP_PORT` and `SMTP_WEB_PORT` environment variables.
 
 After running MailHog, visit http://localhost:8025 in your web browser to view
@@ -289,8 +291,8 @@ To configure Django to use MailHog, add this to your settings.py:
 
 ```python
 # Email configuration for development
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'localhost'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
@@ -313,8 +315,8 @@ This directory is configured as `STATIC_ROOT` in settings:
 STATIC_ROOT = BASE_DIR.parent / "staticfiles"
 ```
 
-After running the container, visit http://localhost:8888 in your browser (
-adjust the port number if needed).
+After running the container, visit http://localhost:8888 in your browser
+(adjust the port number if needed).
 
 You can run this service separately:
 
@@ -392,10 +394,10 @@ your first steps learning the Django framework.
 
 - [ ] Create a local virtual environment
 - [ ] Install base dependencies using pip or uv
-- [ ] Start Docker containers for database and supporting services
-- [ ] Run Django migrations (`python manage.py migrate`)
-- [ ] Create a superuser (`python manage.py createsuperuser`)
-- [ ] Update README file with information relevant to your project
+- [ ] Start Docker containers for `database` and supporting services
+- [ ] Run Django migrations (`python src/manage.py migrate`)
+- [ ] Create a superuser (`python src/manage.py createsuperuser`)
+- [ ] Update the "README" file with information relevant to your project
 
 ## Migration from Previous Versions
 
@@ -501,6 +503,6 @@ repository.
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License – see [LICENSE](LICENSE) file for details.
 
-Copyright (c) 2025 Python training course authors and contributors
+Copyright © 2026 Python training course authors and contributors

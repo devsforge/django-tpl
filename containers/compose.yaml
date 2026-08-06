@@ -1,7 +1,7 @@
 name: django-tpl
 services:
   database:
-    image: postgres:16.10-alpine
+    image: docker.io/postgres:16.10-alpine
     container_name: postgres
     restart: unless-stopped
     environment:
@@ -11,6 +11,8 @@ services:
     volumes:
       - ./postgres:/docker-entrypoint-initdb.d:ro
       - postgres:/var/lib/postgresql/data
+    networks:
+      - database
 
   mail:
     image: docker.io/mailhog/mailhog:v1.0.1
@@ -18,8 +20,16 @@ services:
     ports:
       - "${SMTP_PORT:-1025}:1025"
       - "${SMTP_WEB_PORT:-8025}:8025"
+    volumes:
+      - ./mailhog:/etc/mailhog:ro
+    environment:
+      - MH_AUTH_FILE=/etc/mailhog/auth.txt
+    networks:
+      - mail
 
   staticfiles:
+    profiles:
+      - files
     image: docker.io/caddy:2.10.2-alpine
     container_name: caddy
     restart: unless-stopped
@@ -32,8 +42,12 @@ services:
       - ./caddy:/etc/caddy:ro
       - caddy_data:/data
       - caddy_config:/config
+    networks:
+      - files
 
   pgadmin:
+    profiles:
+      - admin
     image: docker.io/dpage/pgadmin4
     container_name: pgadmin
     restart: unless-stopped
@@ -46,6 +60,8 @@ services:
     volumes:
       - pgadmin:/var/lib/pgadmin
       - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+    networks:
+      - database
     depends_on:
       - database
 
@@ -55,3 +71,8 @@ volumes:
   caddy_data:
   caddy_config:
   pgadmin:
+
+networks:
+  database:
+  mail:
+  files:
