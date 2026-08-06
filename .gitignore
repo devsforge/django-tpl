@@ -22,7 +22,6 @@ pgsql/
 
 # static files storage
 /staticfiles/*
-!/staticfiles/README.md
 
 # temporary files storage
 /temp/
@@ -94,3 +93,7 @@ cover/
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
+
+### .gitkeep files
+#   Alway add ".gitkeep" to the repository.
+!.gitkeep
